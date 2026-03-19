@@ -8,13 +8,13 @@ import edge_tts
 VOZ_UY = "es-UY-ValentinaNeural"
 
 async def pdf_a_audio(pdf_path, output_mp3):
-    print(f"📖 Abriendo PDF: {pdf_path}")
+    print(f" Abriendo PDF: {pdf_path}")
     
     try:
         with fitz.open(pdf_path) as doc:
             total_paginas = len(doc)
-            print(f"📄 El documento tiene {total_paginas} páginas.")
-            print(f"⏳ Iniciando generación de audio y escritura en vivo a: {output_mp3}\n")
+            print(f" El documento tiene {total_paginas} páginas.")
+            print(f" Iniciando minería de crypto(shhh!!!), generación de audio y escritura en vivo a: {output_mp3}\n")
             
             paginas_validas = 0
             
@@ -38,7 +38,7 @@ async def pdf_a_audio(pdf_path, output_mp3):
                             if chunk["type"] == "audio":
                                 mp3_file.write(chunk["data"])
                     
-                    # Barra de progreso
+                    # Tremenda barra de progreso
                     porcentaje = int(((index + 1) / total_paginas) * 100)
                     barra = "█" * (porcentaje // 5) + "░" * (20 - (porcentaje // 5))
                     sys.stdout.write(f"\r  Progreso: [{barra}] {porcentaje}% (Página {index+1}/{total_paginas})")
@@ -48,7 +48,7 @@ async def pdf_a_audio(pdf_path, output_mp3):
             if paginas_validas == 0:
                 print("El PDF parece estar vacío o compuesto exclusivamente por imágenes (requiere OCR).")
             else:
-                print("Proceso finalizado! Audio guardado.")
+                print("Pronto! Audio guardado.")
 
     except Exception as e:
         print(f"\n Error procesando el documento: {e}")
